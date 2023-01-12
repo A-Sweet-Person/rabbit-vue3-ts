@@ -1,6 +1,22 @@
-<script lang="ts" setup name="Layout"></script>
+<script lang="ts" setup name="Layout">
+import AppTopnav from './components/app-topnav.vue' //引入头部导航
+import AppHeader from './components/app-header.vue' //引入头部布局
+import AppFooter from './components/app-footer.vue' //引入底部
+import AppHeaderSticky from './components/app-header-sticky.vue'
+</script>
 <template>
-  <div>layout组件</div>
+  <AppTopnav></AppTopnav>
+  <AppHeader></AppHeader>
+  <AppHeaderSticky></AppHeaderSticky>
+  <main class="app-body">
+    <!-- 路由出口 -->
+    <RouterView></RouterView>
+  </main>
+  <AppFooter></AppFooter>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.app-body {
+  min-height: 600px;
+}
+</style>

@@ -1,7 +1,9 @@
+// 安装 npm i axios
 import axios from 'axios'
 const instance =axios.create({
    // 请求地址
    baseURL:'http://pcapi-xiaotuxian-front.itheima.net/',
+  // 超时时间
    timeout:5000
 })
 // 添加请求接口拦截器
