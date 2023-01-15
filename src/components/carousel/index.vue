@@ -4,12 +4,12 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 type props1 = {
   slides: BannerItem[]
-  autoPlay: boolean
-  duration: number
+  autoPlay?: boolean
+  duration?: number
 }
 const props = withDefaults(defineProps<props1>(), {
   autoPlay: false,
-  duration: 3000,
+  duration: 1000,
 })
 // 控制高亮
 const active = ref(0)
@@ -30,18 +30,18 @@ const next = () => {
   }
 }
 // 自动播放
+// requestAnimationFrame() // 不卡顿
 const play = () => {
   // 如果没有自动播放
   if (!props.autoPlay) return
+  clearInterval(timer)
   // 在ts中，使用定时器，window.setInterval
   timer = window.setInterval(() => {
     next()
   }, props.duration)
 }
 let timer = -1
-const stop = () => {
-  clearInterval(timer)
-}
+const stop = () => {}
 // 自动播放
 onMounted(() => {
   play()
